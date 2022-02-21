@@ -12,7 +12,6 @@ export const App = () => {
   const [filter, setFilter] = useState('');
 
   const formSubmitHandler = ({name, number}) => {
-
     const alreadyInList = contacts.find(contact => contact.name === name);
 
     if (alreadyInList !== undefined) {
@@ -35,7 +34,6 @@ export const App = () => {
   };
 
   const getVisibleContacts = () => {
-
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(contact =>
