@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from 'nanoid';
 import { PhoneBookTitle } from "./PhoneBookTitle/PhoneBookTitle";
@@ -36,9 +36,7 @@ export const App = () => {
     dispatch(filter(event.currentTarget.value))
   };
 
-  const getVisibleContacts = () => {
-    console.log(contacts)
-    
+  const getVisibleContacts = () => {    
     const normalizedFilter = filterValue.toLowerCase();
 
     return contacts.filter(contact => 
@@ -52,7 +50,6 @@ export const App = () => {
   useEffect(() => {
     const contacts = localStorage.getItem('contacts');
     const contactsParsed = JSON.parse(contacts);
-    console.log(contactsParsed)
 
     if (contactsParsed.length !== 0) {
       contactsParsed.map(contact => dispatch(addContact(contact))) 
