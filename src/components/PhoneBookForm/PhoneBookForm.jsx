@@ -14,7 +14,7 @@ export function PhoneBookForm({onSubmit}) {
 
   const handleChange = event => {
 
-    const {name, value} = event.target
+    const {name, value} = event.target;
     
     switch(name) {
       case 'name':
