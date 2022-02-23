@@ -13,9 +13,6 @@ export const App = () => {
   const contacts = useSelector(state => state.contacts);
   const filterValue = useSelector(state => state.filter);
   const dispatch = useDispatch();
-  
-  /* const [contacts, setContacts] = useState([]); */
-  /* const [filter, setFilter] = useState(''); */
 
   const formSubmitHandler = ({name, number}) => {
     const alreadyInList = contacts.find(contact => contact.name === name);
@@ -37,16 +34,15 @@ export const App = () => {
 
   const changeSearchFilter = event => {
     dispatch(filter(event.currentTarget.value))
-    /* setFilter(event.currentTarget.value) */
   };
 
-  /* const getVisibleContacts = () => {
+  const getVisibleContacts = () => {
     
-    const normalizedFilter = filter.toLowerCase();
+    const normalizedFilter = filterValue.toLowerCase();
 
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter));
-  }; */
+  };
 
   const deleteContact = contact => {
     dispatch(removeContact(contact));
@@ -65,7 +61,7 @@ export const App = () => {
     localStorage.setItem('contacts', JSON.stringify(contacts))
   }, [contacts]); */
 
-      /* const searchContact = getVisibleContacts(); */
+      const searchContact = getVisibleContacts();
 
       return (
         <div>
@@ -73,7 +69,7 @@ export const App = () => {
           <PhoneBookForm onSubmit={formSubmitHandler}/>
           <ContactsTitle title="Contacts"/>
           <Filter value={filterValue} onChange={changeSearchFilter}/>
-          <ContactsList contacts={contacts} onDeleteContact={deleteContact}/>
+          <ContactsList contacts={searchContact} onDeleteContact={deleteContact}/>
         </div>
     );
 
