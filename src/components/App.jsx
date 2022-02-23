@@ -5,12 +5,13 @@ import { PhoneBookTitle } from "./PhoneBookTitle/PhoneBookTitle";
 import { PhoneBookForm } from './PhoneBookForm/PhoneBookForm';
 import { ContactsList } from './ContactsList/ContactsList';
 import { ContactsTitle } from "./ContactsTitle/ContactsTitle";
-/* import { Filter } from './Filter/Filter'; */
-import { addContact, removeContact } from "redux/store";
+import { Filter } from './Filter/Filter';
+import { addContact, removeContact, filter } from "redux/store";
 
 export const App = () => {
 
   const contacts = useSelector(state => state.contacts);
+  const filterValue = useSelector(state => state.filter);
   const dispatch = useDispatch();
   
   /* const [contacts, setContacts] = useState([]); */
@@ -34,9 +35,10 @@ export const App = () => {
     dispatch(addContact(contact));
   };
 
-  /* const changeSearchFilter = event => {
-    setFilter(event.currentTarget.value)
-  }; */
+  const changeSearchFilter = event => {
+    dispatch(filter(event.currentTarget.value))
+    /* setFilter(event.currentTarget.value) */
+  };
 
   /* const getVisibleContacts = () => {
     
@@ -70,7 +72,7 @@ export const App = () => {
           <PhoneBookTitle title="Phone book"/>
           <PhoneBookForm onSubmit={formSubmitHandler}/>
           <ContactsTitle title="Contacts"/>
-          {/* <Filter value={filter} onChange={changeSearchFilter}/> */}
+          <Filter value={filterValue} onChange={changeSearchFilter}/>
           <ContactsList contacts={contacts} onDeleteContact={deleteContact}/>
         </div>
     );
