@@ -37,10 +37,11 @@ export const App = () => {
   };
 
   const getVisibleContacts = () => {
+    console.log(contacts)
     
     const normalizedFilter = filterValue.toLowerCase();
 
-    return contacts.filter(contact =>
+    return contacts.filter(contact => 
       contact.name.toLowerCase().includes(normalizedFilter));
   };
 
@@ -48,18 +49,19 @@ export const App = () => {
     dispatch(removeContact(contact));
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     const contacts = localStorage.getItem('contacts');
     const contactsParsed = JSON.parse(contacts);
+    console.log(contactsParsed)
 
-    if (contactsParsed) {
-      setContacts(contactsParsed);
+    if (contactsParsed.length !== 0) {
+      contactsParsed.map(contact => dispatch(addContact(contact))) 
     };
   }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts))
-  }, [contacts]); */
+  }, [contacts]);
 
       const searchContact = getVisibleContacts();
 
