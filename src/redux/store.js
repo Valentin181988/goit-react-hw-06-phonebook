@@ -20,3 +20,48 @@ export const store = configureStore({
         filter: filterReducer,
     },
   });
+
+
+  /* import { createSlice } from '@reduxjs/toolkit';
+
+  export const contactsSlice = createSlice({
+      name: 'contacts',
+      initialState: {
+        items: [],
+   
+      },
+      reducers: {
+          addContact(state, action) {
+            console.log("state", state.contacts)
+              return [...state, action.payload]
+          },
+          removeContact(state, action) {
+              return state.filter(item => item.id !== action.payload);
+          },
+         
+      },
+  });
+
+  export const { addContact, removeContact } = contactsSlice.actions;
+
+  export const filterSlice = createSlice({
+    name: 'filter',
+    initialState: {
+      filter: "",
+    },
+    reducers: {
+        filter(state, action) {
+            console.log("filter", state.filter)
+          return action.payload
+        },
+    },
+});
+  
+  export const { filter } = filterSlice.actions;
+
+  export const store = configureStore({
+    reducer: {
+      contacts: contactsSlice.reducer,
+      filter: filterSlice.reducer,
+    },
+  }); */
