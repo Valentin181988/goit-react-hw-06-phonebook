@@ -9,9 +9,12 @@ import { Filter } from './Filter/Filter';
 import { addContact, removeContact, filter } from "redux/store";
 
 export const App = () => {
-
+   
+   const state = useSelector(state => state);
+   console.log("state", state)
   const contacts = useSelector(state => state.contacts);
-  const filterValue = useSelector(state => state.filter);
+  console.log("contacts", contacts)
+  const filterValue = useSelector(state => state.filter.value);
   const dispatch = useDispatch();
 
   const formSubmitHandler = ({name, number}) => {

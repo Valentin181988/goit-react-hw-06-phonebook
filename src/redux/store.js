@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createAction, createReducer } from '@reduxjs/toolkit';
+/* import { createAction, createReducer } from '@reduxjs/toolkit';
 
 export const addContact = createAction('newContact');
 export const removeContact = createAction('removeContact');
@@ -19,21 +19,17 @@ export const store = configureStore({
         contacts: contactsReduser,
         filter: filterReducer,
     },
-  });
+  }); */
 
 
-  /* import { createSlice } from '@reduxjs/toolkit';
+  import { createSlice } from '@reduxjs/toolkit';
 
   export const contactsSlice = createSlice({
       name: 'contacts',
-      initialState: {
-        items: [],
-   
-      },
+      initialState: [],
       reducers: {
           addContact(state, action) {
-            console.log("state", state.contacts)
-              return [...state, action.payload]
+            return [...state, action.payload]; 
           },
           removeContact(state, action) {
               return state.filter(item => item.id !== action.payload);
@@ -47,12 +43,11 @@ export const store = configureStore({
   export const filterSlice = createSlice({
     name: 'filter',
     initialState: {
-      filter: "",
+      value: "",
     },
     reducers: {
         filter(state, action) {
-            console.log("filter", state.filter)
-          return action.payload
+           state.value = action.payload;
         },
     },
 });
@@ -64,4 +59,4 @@ export const store = configureStore({
       contacts: contactsSlice.reducer,
       filter: filterSlice.reducer,
     },
-  }); */
+  });
