@@ -6,7 +6,8 @@ import { PhoneBookForm } from './PhoneBookForm/PhoneBookForm';
 import { ContactsList } from './ContactsList/ContactsList';
 import { ContactsTitle } from "./ContactsTitle/ContactsTitle";
 import { Filter } from './Filter/Filter';
-import { addContact, removeContact, filter } from "redux/store";
+import { addContact, removeContact } from "../redux/slices/contactsSlice";
+import { filter } from "../redux/slices/filterSlice";
 
 export const App = () => {
    
